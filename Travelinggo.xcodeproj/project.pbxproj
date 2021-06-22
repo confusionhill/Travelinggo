@@ -14,6 +14,7 @@
 		FF5642CA267F652C000DD4AE /* TravelinggoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5642C9267F652C000DD4AE /* TravelinggoTests.swift */; };
 		FF5642D5267F652C000DD4AE /* TravelinggoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF5642D4267F652C000DD4AE /* TravelinggoUITests.swift */; };
 		FFA60FF0267F6EC800BE8B08 /* Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA60FEF267F6EC800BE8B08 /* Extentions.swift */; };
+		FFA60FF2267F8DCC00BE8B08 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFA60FF1267F8DCC00BE8B08 /* AccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		FF5642D4267F652C000DD4AE /* TravelinggoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelinggoUITests.swift; sourceTree = "<group>"; };
 		FF5642D6267F652C000DD4AE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FFA60FEF267F6EC800BE8B08 /* Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extentions.swift; sourceTree = "<group>"; };
+		FFA60FF1267F8DCC00BE8B08 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				FF5642B7267F652B000DD4AE /* TravelinggoApp.swift */,
 				FF5642B9267F652B000DD4AE /* ContentView.swift */,
+				FFA60FF1267F8DCC00BE8B08 /* AccountView.swift */,
 				FFA60FEE267F6EB700BE8B08 /* Resources */,
 				FF5642BB267F652C000DD4AE /* Assets.xcassets */,
 				FF5642C0267F652C000DD4AE /* Info.plist */,
@@ -270,6 +273,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FFA60FF2267F8DCC00BE8B08 /* AccountView.swift in Sources */,
 				FF5642BA267F652B000DD4AE /* ContentView.swift in Sources */,
 				FF5642B8267F652B000DD4AE /* TravelinggoApp.swift in Sources */,
 				FFA60FF0267F6EC800BE8B08 /* Extentions.swift in Sources */,

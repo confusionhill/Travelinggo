@@ -13,10 +13,22 @@ struct ContentView: View {
             Color(hex: "F2F7FF")
                 .ignoresSafeArea(edges: /*@START_MENU_TOKEN@*/.bottom/*@END_MENU_TOKEN@*/)
             VStack{
+                //Mark : Content
                 ScrollView {
                     VStack(alignment:.leading){
                         CardButton()
                         PromoView()
+                        VStack{
+                            HStack {
+                                Text("Makan bang")
+                                Spacer()
+                            }
+                            RoundedRectangle(cornerRadius: 10)
+                                .frame(minHeight:200)
+                                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                        }
+                        .padding()
+                        .background(Color.white)
                     }
                     
                 }
@@ -27,19 +39,23 @@ struct ContentView: View {
                 .frame(height:30)
                 .foregroundColor(.white)
             HStack{
-                Text("Travellingo")
+                Image("logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width:UIScreen.width/3)
                 Spacer()
                 Text("Morning Sunshine :)")
             }
             .padding(.horizontal,10)
             VStack{
-                Spacer()
-                RoundedRectangle(cornerRadius: 100)
-                    .frame(width: UIScreen.width-40, height: 70, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+               Spacer()
+              Rectangle()
+                    .frame(width: UIScreen.width, height: 80, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .shadow(color: .gray, radius: 3, x: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/, y: /*@START_MENU_TOKEN@*/0.0/*@END_MENU_TOKEN@*/)
                     .foregroundColor(.white)
-            }
-        }
+                    
+            }//.padding(.bottom,40)
+        }.ignoresSafeArea(edges: /*@START_MENU_TOKEN@*/.bottom/*@END_MENU_TOKEN@*/)
     }
 }
 
@@ -52,6 +68,7 @@ struct ContentView_Previews: PreviewProvider {
 struct CardItem: View {
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
+            //.padding()
             .frame(width: 190, height: 120, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
             .foregroundColor(Color(hex: "E66868"))
             .overlay(
@@ -74,6 +91,7 @@ struct CardItem: View {
                     }
                 }
             )
+            //.padding(.horizontal)
     }
 }
 
