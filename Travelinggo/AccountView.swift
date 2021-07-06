@@ -8,44 +8,22 @@
 import SwiftUI
 
 struct AccountView: View {
-    @State var isOpen:Bool = false
-    @State private var offset:CGFloat = -UIScreen.width/2 - 200
+    let kolor:[Color] = [.green,.blue,.pink,.gray,.orange,.red,.purple]
+    @State  private var offset:CGFloat = UIScreen.height/4
+    @State var isLoaded:Bool = false
     var body: some View {
-        ZStack{
-            VStack {
-                Button(action: {
-                    self.isOpen.toggle()
-                    offset = 0
-                }) {
-                    Text(isOpen ? "Close" : "Open")
-                }
-               // Image("logo")
+        ZStack(alignment:.bottom){
+            Button("Makan bang"){
+                self.offset = UIScreen.height/4
+                isLoaded.toggle()
             }
-            GeometryReader{ _ in
-                HStack {
-                    VStack {
-                        navBarlah(offset: $offset,isOpen: $isOpen)
-                    }
-                    Spacer()
-                    
-                }
-            }
-            .ignoresSafeArea()
-            .offset(x:offset)
-            .animation(.easeIn.delay(0.2))
-            .onAppear{
-                offset = -UIScreen.width/2 - 200
-            }
+           BottomDrawer(offset: $offset)
         }
+        .frame(width: UIScreen.width, height: UIScreen.height, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        .background(Color.gray.ignoresSafeArea())
     }
 }
 
-func NavBar(isOpen:Bool) -> some View {
-    if isOpen{
-        return AnyView(Text("Makan").foregroundColor(.blue))
-    }
-    return AnyView(Text("Minum").foregroundColor(.blue))
-}
 
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
@@ -53,24 +31,59 @@ struct AccountView_Previews: PreviewProvider {
     }
 }
 
-struct navBarlah: View {
+struct BottomDrawer: View {
     @Binding var offset:CGFloat
-    @Binding var isOpen:Bool
+    @State var isClicked:Bool = false
     var body: some View {
         ZStack {
-            Rectangle()
-                .frame(width:UIScreen.width/2 + 130)
-            //NavBar(isOpen: isOpen)
-            VStack {
-                Text("ga ada brow \(offset)").foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                Button(action: {
-                    self.isOpen = false
-                    offset = -500
-                }) {
-                    Text("Close")
+            VStack{
+                Capsule()
+                    .fill(Color.black.opacity(0.2))
+                    .frame(width:60,height:7)
+                    .padding()
+                ScrollView{
+                    VStack(spacing:20){
+                        ForEach(0..<10){_ in
+                            Text("Makan bang")
+                        }
+                    }.frame(width:UIScreen.width)
                 }
+                .onTapGesture {
+                    isClicked.toggle()
+                }
+                Spacer()
+                Button("makan bang"){
+                    
+                }
+                .foregroundColor(.white)
+                .padding()
+                .frame(width:UIScreen.width-50)
+                .background(Color.pink)
+                .cornerRadius(10)
+                .padding(.bottom,30)
             }
-            
+            .frame(width:UIScreen.width,height:UIScreen.height/2)
+            .background(Color.white)
+            .cornerRadius(25)
+            .offset(y:offset)
+            .gesture(
+                DragGesture()
+                    .onChanged{val in
+                        let startLoc = val.startLocation
+                        let pindah = startLoc.y + val.translation.height
+                        if (pindah > UIScreen.height/4 && self.isClicked == false) {
+                            self.offset = pindah
+                        }
+                    }
+                    .onEnded{val in
+                        if self.offset >  UIScreen.height/4 + 200 {
+                            self.offset = UIScreen.height
+                        } else {
+                            self.offset = UIScreen.height/4 //14
+                        }
+                    }
+            )
+            .animation(.easeIn(duration: 1))
         }
     }
 }
